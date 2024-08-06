@@ -16,8 +16,37 @@ export default class Engine extends Application {
                 case "KeyD": {
                     const sprite = this.stage.children.find(child => child instanceof Player)
                     if (sprite) {
-                        sprite.routineArgs.moveRight = true
+                        Player.state.animation.flags.moveRight = true
                     }
+                    break;
+                }
+                case "KeyA": {
+                    const sprite = this.stage.children.find(child => child instanceof Player)
+                    if (sprite) {
+                        Player.state.animation.flags.moveLeft = true
+                    }
+                    break;
+                }
+                case "KeyW": {
+                    const sprite = this.stage.children.find(child => child instanceof Player)
+                    if (sprite) {
+                        Player.state.animation.flags.moveUp = true
+                    }
+                    break;
+                }
+                case "KeyS": {
+                    const sprite = this.stage.children.find(child => child instanceof Player)
+                    if (sprite) {
+                        Player.state.animation.flags.moveDown = true
+                    }
+                    break;
+                }
+                case "Space": {
+                    const sprite = this.stage.children.find(child => child instanceof Player)
+                    if (sprite) {
+                        Player.state.animation.flags.isJump = true
+                    }
+                    break;
                 }
             }
         })
@@ -27,8 +56,30 @@ export default class Engine extends Application {
                 case "KeyD": {
                     const sprite = this.stage.children.find(child => child instanceof Player)
                     if (sprite) {
-                        sprite.routineArgs.moveRight = false
+                        Player.state.animation.flags.moveRight = false
                     }
+                    break;
+                }
+                case "KeyA": {
+                    const sprite = this.stage.children.find(child => child instanceof Player)
+                    if (sprite) {
+                        Player.state.animation.flags.moveLeft = false
+                    }
+                    break;
+                }
+                case "KeyW": {
+                    const sprite = this.stage.children.find(child => child instanceof Player)
+                    if (sprite) {
+                        Player.state.animation.flags.moveUp = false
+                    }
+                    break;
+                }
+                case "KeyS": {
+                    const sprite = this.stage.children.find(child => child instanceof Player)
+                    if (sprite) {
+                        Player.state.animation.flags.moveDown = false
+                    }
+                    break;
                 }
             }
         })
@@ -47,6 +98,8 @@ export default class Engine extends Application {
         await Assets.init({ manifest });
 
         const player = new Player(await Player.loadAssets())
+        player.x = 300
+        player.y = 300
         this.stage.addChild(player);
 
         this._bindKeyboard()

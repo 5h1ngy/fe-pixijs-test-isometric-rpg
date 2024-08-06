@@ -11,8 +11,21 @@ export default class Player extends AnimatedSprite {
 
     public assets: Record<string | number, PIXI.Texture[]>;
 
-    public routineArgs = {
-        moveRight: false,
+    public static state = {
+        animation: {
+            current: 'walkRight',
+            flags: {
+                moveRight: false,
+                moveLeft: false,
+                moveUp: false,
+                moveDown: false,
+                isJump: false,
+                jumpUp: false,
+                jumpLeft: false,
+                jumpDown: false,
+                jumpRight: false,
+            }
+        }
     }
 
     public static async loadAssets() {
@@ -25,7 +38,7 @@ export default class Player extends AnimatedSprite {
     }
 
     constructor(animations: Record<string | number, PIXI.Texture[]>) {
-        super(animations.walkRight);
+        super(animations['walkRight']);
 
         this.assets = animations
 
@@ -39,16 +52,80 @@ export default class Player extends AnimatedSprite {
     public routine(deltaTime: number) {
         const speed: number = deltaTime / 10;
 
-        if (this.routineArgs.moveRight) {
+        if (Player.state.animation.flags.moveRight) {
+            this.x += speed * 24
+
             if (this.playing === false) {
                 this.textures = this.assets.walkRight;
-                this.animationSpeed = 0.2;
+                Player.state.animation.current = 'walkRight'
+                this.animationSpeed = 0.35;
                 this.play()
             }
-            this.x += speed * 24
+
+        } else if (Player.state.animation.flags.moveLeft) {
+            this.x -= speed * 24
+
+            if (this.playing === false) {
+                this.textures = this.assets.walkLeft;
+                Player.state.animation.current = 'walkLeft'
+                this.animationSpeed = 0.35;
+                this.play()
+            }
+
+        } else if (Player.state.animation.flags.moveUp) {
+            this.y -= speed * 24
+
+            if (this.playing === false) {
+                this.textures = this.assets.walkUp;
+                Player.state.animation.current = 'walkUp'
+                this.animationSpeed = 0.35;
+                this.play()
+            }
+
+        } else if (Player.state.animation.flags.moveDown) {
+            this.y += speed * 24
+
+            if (this.playing === false) {
+                this.textures = this.assets.walkDown;
+                Player.state.animation.current = 'walkDown'
+                this.animationSpeed = 0.35;
+                this.play()
+            }
+
+        } else if (Player.state.animation.flags.isJump) {
+            if (this.playing === false) {
+                this.animationSpeed = 0.2;
+
+                switch (Player.state.animation.current) {
+                    case "walkRight": {
+                        this.textures = this.assets.jumpRight;
+                        break;
+                    }
+                    case "walkLeft": {
+                        this.textures = this.assets.jumpLeft;
+                        break;
+                    }
+                    case "walkUp": {
+                        this.textures = this.assets.jumpUp;
+                        break;
+                    }
+                    case "walkDown": {
+                        this.textures = this.assets.jumpDown;
+                        break;
+                    }
+                }
+
+                this.play()
+
+                setTimeout(() => {
+                    Player.state.animation.flags.isJump = false
+                    this.textures = this.assets[Player.state.animation.current];
+                }, 400)
+            }
 
         } else {
             this.stop()
+            this.currentFrame = 0
         }
     }
 
