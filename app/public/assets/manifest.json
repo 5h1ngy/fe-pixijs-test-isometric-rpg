@@ -1,0 +1,13 @@
+{
+    "bundles": [
+        {
+            "name": "spritesheet",
+            "assets": [
+                {
+                    "alias": "lpcNaked",
+                    "src": "public/assets/spritesheet/lpc_naked.png"
+                }
+            ]
+        }
+    ]
+}

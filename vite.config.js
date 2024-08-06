@@ -11,7 +11,7 @@ import path from 'path'
 export default defineConfig({
   root: path.resolve(__dirname, 'app'),
   base: './',
-  publicDir: '/public',
+  publicDir: './public',
   cacheDir: path.resolve(__dirname, '.vite'),
   plugins: [
     jsonX(),
@@ -27,13 +27,9 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@app/assets': path.resolve(__dirname, 'app', 'src', 'assets'),
-      '@app/components': path.resolve(__dirname, 'app', 'src', 'components'),
-      '@app/containers': path.resolve(__dirname, 'app', 'src', 'containers'),
-      '@app/hocs': path.resolve(__dirname, 'app', 'src', 'hocs'),
-      '@app/pages': path.resolve(__dirname, 'app', 'src', 'pages'),
-      '@app/services': path.resolve(__dirname, 'app', 'src', 'services'),
-      '@app/store': path.resolve(__dirname, 'app', 'src', 'store'),
+      '@app': path.resolve(__dirname, 'app', 'src'),
+      '@public': path.resolve(__dirname, 'app', 'public'),
+      '@assets': path.resolve(__dirname, 'app', 'public', 'assets')
     },
   },
   build: {

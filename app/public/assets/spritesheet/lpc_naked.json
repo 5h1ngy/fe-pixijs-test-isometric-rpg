@@ -1,0 +1,58 @@
+{
+    "frames": {
+        "walk_right_0": {
+            "frame": { "x": 0, "y": 704, "w": 64, "h": 64 },
+            "sourceSize": { "w": 64, "h": 64 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 }
+        },
+        "walk_right_1": {
+            "frame": { "x": 64, "y": 704, "w": 64, "h": 64 },
+            "sourceSize": { "w": 64, "h": 64 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 }
+        },
+        "walk_right_2": {
+            "frame": { "x": 128, "y": 704, "w": 64, "h": 64 },
+            "sourceSize": { "w": 64, "h": 64 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 }
+        },
+        "walk_right_3": {
+            "frame": { "x": 192, "y": 704, "w": 64, "h": 64 },
+            "sourceSize": { "w": 64, "h": 64 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 }
+        },
+        "walk_right_4": {
+            "frame": { "x": 256, "y": 704, "w": 64, "h": 64 },
+            "sourceSize": { "w": 64, "h": 64 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 }
+        },
+        "walk_right_5": {
+            "frame": { "x": 320, "y": 704, "w": 64, "h": 64 },
+            "sourceSize": { "w": 64, "h": 64 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 }
+        },
+        "walk_right_6": {
+            "frame": { "x": 384, "y": 704, "w": 64, "h": 64 },
+            "sourceSize": { "w": 64, "h": 64 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 }
+        },
+        "walk_right_7": {
+            "frame": { "x": 448, "y": 704, "w": 64, "h": 64 },
+            "sourceSize": { "w": 64, "h": 64 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 }
+        },
+        "walk_right_8": {
+            "frame": { "x": 512, "y": 704, "w": 64, "h": 64 },
+            "sourceSize": { "w": 64, "h": 64 },
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 }
+        }
+    },
+    "meta": {
+        "image": "public/assets/spritesheet/lpc_naked.png",
+        "format": "RGBA8888",
+        "size": { "w": 832, "h": 2944 },
+        "scale": 1
+    },
+    "animations": {
+        "walkRight": ["walk_right_0", "walk_right_1", "walk_right_2", "walk_right_3", "walk_right_4", "walk_right_5", "walk_right_6", "walk_right_7", "walk_right_8"]
+    }
+}
