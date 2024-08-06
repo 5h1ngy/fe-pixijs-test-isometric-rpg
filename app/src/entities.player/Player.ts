@@ -1,58 +1,11 @@
-import * as PIXI from 'pixi.js';
-import { Assets } from 'pixi.js';
-import { Spritesheet, AnimatedSprite } from 'pixi.js';
+import Character from "@app/entities.character/Character";
 
-// import { gsap } from "gsap";
-
-import lpcNakedMeta from "@assets/spritesheet/lpc_naked.json";
-import '../style.css'
-
-export default class Player extends AnimatedSprite {
-
-    public assets: Record<string | number, PIXI.Texture[]>;
-
-    public static state = {
-        animation: {
-            current: 'walkRight',
-            flags: {
-                moveRight: false,
-                moveLeft: false,
-                moveUp: false,
-                moveDown: false,
-                isJump: false,
-                jumpUp: false,
-                jumpLeft: false,
-                jumpDown: false,
-                jumpRight: false,
-            }
-        }
-    }
-
-    public static async loadAssets() {
-        const { lpcNaked: lpcNakedAsset } = await Assets.loadBundle('spritesheet');
-        const spritesheet = new Spritesheet(lpcNakedAsset, <PIXI.SpritesheetData>lpcNakedMeta)
-
-        spritesheet.parse();
-
-        return spritesheet.animations;
-    }
-
-    constructor(animations: Record<string | number, PIXI.Texture[]>) {
-        super(animations['walkRight']);
-
-        this.assets = animations
-
-        // gsap.to(this, {
-        //     pixi: {
-        //         x: this.x + 24 // Block Size
-        //     }
-        // });
-    }
+export default class Player extends Character {
 
     public routine(deltaTime: number) {
         const speed: number = deltaTime / 10;
 
-        if (Player.state.animation.flags.moveRight) {
+        if (Player.state.animation.movements.moveRight) {
             this.x += speed * 24
 
             if (this.playing === false) {
@@ -62,7 +15,7 @@ export default class Player extends AnimatedSprite {
                 this.play()
             }
 
-        } else if (Player.state.animation.flags.moveLeft) {
+        } else if (Player.state.animation.movements.moveLeft) {
             this.x -= speed * 24
 
             if (this.playing === false) {
@@ -72,7 +25,7 @@ export default class Player extends AnimatedSprite {
                 this.play()
             }
 
-        } else if (Player.state.animation.flags.moveUp) {
+        } else if (Player.state.animation.movements.moveUp) {
             this.y -= speed * 24
 
             if (this.playing === false) {
@@ -82,7 +35,7 @@ export default class Player extends AnimatedSprite {
                 this.play()
             }
 
-        } else if (Player.state.animation.flags.moveDown) {
+        } else if (Player.state.animation.movements.moveDown) {
             this.y += speed * 24
 
             if (this.playing === false) {
@@ -92,7 +45,7 @@ export default class Player extends AnimatedSprite {
                 this.play()
             }
 
-        } else if (Player.state.animation.flags.isJump) {
+        } else if (Player.state.animation.actions.jump.isJump) {
             if (this.playing === false) {
                 this.animationSpeed = 0.2;
 
@@ -118,7 +71,7 @@ export default class Player extends AnimatedSprite {
                 this.play()
 
                 setTimeout(() => {
-                    Player.state.animation.flags.isJump = false
+                    Player.state.animation.actions.jump.isJump = false
                     this.textures = this.assets[Player.state.animation.current];
                 }, 400)
             }
