@@ -9,8 +9,8 @@ export default class Resource extends State {
 
     public assets: Record<string | number, PIXI.Texture[]>;
 
-    constructor(animations: Record<string | number, PIXI.Texture[]>) {
-        super(animations['walkRight']);
+    constructor(animations: Record<string | number, PIXI.Texture[]>, reset: string) {
+        super(animations[reset]);
 
         this.assets = animations;
     }
