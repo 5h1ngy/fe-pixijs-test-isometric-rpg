@@ -4,7 +4,7 @@ import '../style.css'
 
 const engine = new Core();
 
-await engine.init({ width: 800, height: 800 })
+await engine.init({ width: 1920, height: 905 })
 await engine.loadScene();
 await engine.run();
 

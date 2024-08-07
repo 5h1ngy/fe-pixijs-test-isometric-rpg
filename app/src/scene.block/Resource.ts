@@ -2,24 +2,27 @@ import * as PIXI from 'pixi.js';
 import { Assets } from 'pixi.js';
 import { Spritesheet } from 'pixi.js';
 
+import aiBlocksMeta from "@assets/tileset/ai_blocks.json";
+import { ANIMATION } from "@app/scene.block/Types";
 import State from "./State";
-import { TYPES } from "@app/scene.block/Types";
 
 export default class Resource extends State {
 
     public assets: Record<string | number, PIXI.Texture[]>;
 
-    constructor(animations: Record<string | number, PIXI.Texture[]>, reset: string) {
+    constructor(
+        animations: Record<string | number, PIXI.Texture[]>,
+        reset: ANIMATION
+    ) {
         super(animations[reset]);
 
         this.assets = animations;
     }
 
-    public static async loadDynamicAssets(assetType: TYPES) {
-        const { default: metaData } = await import(`./../../public/assets/tileset/mc_block_${assetType}.json`);
-        const { mcBlocks: mcBlocksdAsset } = await Assets.loadBundle('tileset');
+    public static async loadDynamicAssets() {
+        const { aiBlocks: aiBlocksAsset } = await Assets.loadBundle('spritesheet');
 
-        const spritesheet = new Spritesheet(mcBlocksdAsset, <PIXI.SpritesheetData>metaData)
+        const spritesheet = new Spritesheet(aiBlocksAsset, <PIXI.SpritesheetData>aiBlocksMeta)
         spritesheet.parse();
 
         return spritesheet.animations;

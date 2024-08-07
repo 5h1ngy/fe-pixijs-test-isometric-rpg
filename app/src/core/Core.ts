@@ -28,12 +28,15 @@ export default class Core extends Application {
     public async loadScene() {
         await Assets.init({ manifest });
 
-        const map = new Map({ x: 100, y: 100 })
+        const map = new Map({ x: 900, y: -1700 })
         map.init();
         this.stage.addChild(map);
 
-        const player = new Player({ pack: await Player.loadDynamicAssets(), reset: "walkRight" }, { x: 300, y: 300 })
+        const player = new Player({ pack: await Player.loadDynamicAssets(), reset: "walkRight" }, { x: (1920 / 2), y: (905 / 2) })
         this.stage.addChild(player);
+
+        this.stage.position.x = player.x
+        this.stage.position.y = player.y
     }
 
     public async run() {
@@ -45,6 +48,8 @@ export default class Core extends Application {
             const player = this.stage.children.find(child => child instanceof Player)
             if (player) {
                 player.routine(ticker.deltaTime);
+                this.stage.position.x = (player.x * -1) + (1920 / 2)
+                this.stage.position.y = (player.y * -1) + (905 / 2)
             }
         });
     }

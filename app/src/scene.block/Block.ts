@@ -1,13 +1,13 @@
 import * as PIXI from 'pixi.js';
 import Resource from "./Resource";
-import { TYPES } from "@app/scene.block/Types";
+import { TYPE, ANIMATION } from "@app/scene.block/Types";
 
 export default class Block extends Resource {
 
     constructor(
-        animations: { pack: Record<string | number, PIXI.Texture[]>, reset: string },
+        animations: { pack: Record<string | number, PIXI.Texture[]>, reset: ANIMATION },
         position: { x: number, y: number },
-        options: { type: TYPES }
+        options: { type: TYPE }
     ) {
         super(animations.pack, animations.reset);
 

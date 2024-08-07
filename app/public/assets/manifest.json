@@ -6,15 +6,10 @@
                 {
                     "alias": "lpcNaked",
                     "src": "public/assets/spritesheet/lpc_naked.png"
-                }
-            ]
-        },
-        {
-            "name": "tileset",
-            "assets": [
+                },
                 {
-                    "alias": "mcBlocks",
-                    "src": "public/assets/tileset/mc_blocks.png"
+                    "alias": "aiBlocks",
+                    "src": "public/assets/tileset/ai_blocks.png"
                 }
             ]
         }

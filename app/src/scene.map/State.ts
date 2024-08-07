@@ -1,8 +1,8 @@
 import { AnimatedSprite } from 'pixi.js';
-import { TYPES } from "@app/scene.block/Types";
+import { TYPE } from "@app/scene.block/Types";
 
 export interface IState {
-    type: TYPES | undefined,
+    type: TYPE | undefined,
     animation: {
         current: string | undefined,
     }
