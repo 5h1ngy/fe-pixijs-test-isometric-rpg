@@ -3,9 +3,13 @@ import Resource from "./Resource";
 
 export default class Character extends Resource {
 
-    constructor(animations: { pack: Record<string | number, PIXI.Texture[]>, reset: string }, position: { x: number, y: number }) {
+    constructor(
+        animations: { pack: Record<string | number, PIXI.Texture[]>, reset: string },
+        position: { x: number, y: number }
+    ) {
         super(animations.pack, animations.reset);
 
+        Character.state.animation.current = animations.reset;
         this.x = position.x;
         this.y = position.y;
     }

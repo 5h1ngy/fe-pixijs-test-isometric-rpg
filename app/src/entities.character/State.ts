@@ -3,7 +3,7 @@ import { AnimatedSprite } from 'pixi.js';
 
 export interface IState {
     animation: {
-        current: string,
+        current: string | undefined,
 
         movements: {
             moveRight: boolean,
@@ -27,7 +27,7 @@ export default class State extends AnimatedSprite {
 
     public static state: IState = {
         animation: {
-            current: 'walkRight',
+            current: undefined,
             movements: {
                 moveRight: false,
                 moveLeft: false,

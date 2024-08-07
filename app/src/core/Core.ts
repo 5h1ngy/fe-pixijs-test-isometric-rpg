@@ -6,8 +6,7 @@ import { PixiPlugin } from "gsap/PixiPlugin";
 import manifest from "@assets/manifest.json";
 import Keyboard from "@app/core.inputOutput/Keyboard";
 import Player from "@app/entities.player/Player";
-import Block from "@app/scene.block/Block";
-import { Types as BlockTypes } from "@app/scene.block/Types";
+import Map from "@app/scene.map/Map";
 
 export default class Core extends Application {
 
@@ -29,8 +28,9 @@ export default class Core extends Application {
     public async loadScene() {
         await Assets.init({ manifest });
 
-        const block = new Block({ pack: await Block.loadDynamicAssets(BlockTypes.BLOCKS.TERRAIN), reset: "terrain" }, { x: 200, y: 200 })
-        this.stage.addChild(block);
+        const map = new Map({ x: 100, y: 100 })
+        map.init();
+        this.stage.addChild(map);
 
         const player = new Player({ pack: await Player.loadDynamicAssets(), reset: "walkRight" }, { x: 300, y: 300 })
         this.stage.addChild(player);

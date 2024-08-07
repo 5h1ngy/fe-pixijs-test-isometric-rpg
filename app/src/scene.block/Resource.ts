@@ -3,7 +3,7 @@ import { Assets } from 'pixi.js';
 import { Spritesheet } from 'pixi.js';
 
 import State from "./State";
-import { Types } from "./Types";
+import { TYPES } from "@app/scene.block/Types";
 
 export default class Resource extends State {
 
@@ -15,7 +15,7 @@ export default class Resource extends State {
         this.assets = animations;
     }
 
-    public static async loadDynamicAssets(assetType: Types.BLOCKS) {
+    public static async loadDynamicAssets(assetType: TYPES) {
         const { default: metaData } = await import(`./../../public/assets/tileset/mc_block_${assetType}.json`);
         const { mcBlocks: mcBlocksdAsset } = await Assets.loadBundle('tileset');
 

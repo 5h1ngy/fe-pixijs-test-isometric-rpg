@@ -15,7 +15,7 @@
         "image": "public/assets/tileset/mc_blocks.png",
         "format": "RGBA8888",
         "size": { "w": 832, "h": 2944 },
-        "scale": 0.6
+        "scale": 0.7
     },
     "animations": {
         "terrain": ["terrain_0", "terrain_1"]
