@@ -11,6 +11,7 @@ export interface IState {
             moveUp: boolean,
             moveDown: boolean,
         },
+
         actions: {
             jump: {
                 isJump: boolean,
@@ -25,7 +26,7 @@ export interface IState {
 
 export default class State extends AnimatedSprite {
 
-    public static state: IState = {
+    public state: IState = {
         animation: {
             current: undefined,
             movements: {

@@ -1,5 +1,5 @@
 import { AnimatedSprite } from 'pixi.js';
-import { TYPE } from "@app/scene.block/Types";
+import { TYPE } from "./types";
 
 export interface IState {
     type: TYPE | undefined,
@@ -10,7 +10,7 @@ export interface IState {
 
 export default class State extends AnimatedSprite {
 
-    public static state: IState = {
+    public state: IState = {
         type: undefined,
         animation: {
             current: undefined,

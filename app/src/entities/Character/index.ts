@@ -9,7 +9,7 @@ export default class Character extends Resource {
     ) {
         super(animations.pack, animations.reset);
 
-        Character.state.animation.current = animations.reset;
+        this.state.animation.current = animations.reset;
         this.x = position.x;
         this.y = position.y;
     }

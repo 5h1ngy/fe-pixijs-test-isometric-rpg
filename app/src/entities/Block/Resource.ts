@@ -3,7 +3,7 @@ import { Assets } from 'pixi.js';
 import { Spritesheet } from 'pixi.js';
 
 import aiBlocksMeta from "@assets/tileset/ai_blocks.json";
-import { ANIMATION } from "@app/scene.block/Types";
+import { ANIMATION } from "./types";
 import State from "./State";
 
 export default class Resource extends State {

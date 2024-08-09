@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import Resource from "./Resource";
-import { TYPE, ANIMATION } from "@app/scene.block/Types";
+import { TYPE, ANIMATION } from "./types";
 
 export default class Block extends Resource {
 
@@ -11,8 +11,8 @@ export default class Block extends Resource {
     ) {
         super(animations.pack, animations.reset);
 
-        Block.state.animation.current = animations.reset;
-        Block.state.type = options.type;
+        this.state.animation.current = animations.reset;
+        this.state.type = options.type;
         this.x = position.x;
         this.y = position.y;
     }
