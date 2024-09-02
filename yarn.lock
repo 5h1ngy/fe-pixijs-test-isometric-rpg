@@ -823,9 +823,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fe-pixijs-poc-isometric-test-1@workspace:.":
+"fe-pixijs-test-isometric-rpg@workspace:.":
   version: 0.0.0-use.local
-  resolution: "fe-pixijs-poc-isometric-test-1@workspace:."
+  resolution: "fe-pixijs-test-isometric-rpg@workspace:."
   dependencies:
     gsap: "npm:^3.12.5"
     lodash: "npm:^4.17.21"
